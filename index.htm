@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWISH & BLISS | غسول الفم المتطور</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00796B; 
+            --light-mint: #E0F2F1;
+            --accent: #FF5722; 
+            --text-dark: #263238;
+            --text-light: #546E7A;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #26A69A 100%);
+            padding: 40px 20px 60px;
+            text-align: center;
+            color: var(--white);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            position: relative;
+        }
+
+        .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .product-showcase {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 30%, #ffffff 0%, #c1f0eb 50%, #00796B 100%);
+            border: 6px solid var(--white);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden; /* بيقص أي حاجة تطلع بره الدائرة */
+        }
+
+      /* التعديل الجديد لتحريك الإزازة لفوق */
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* عدلنا الزوم لـ 1.7 عشان تبقى مريحة أكتر */
+            transform: scale(1.5); 
+            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.4)); 
+            /* هنا اللعبة: الـ margin-top بالسالب بيسحب العنصر لفوق */
+            margin-top: -15px; 
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .volume {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .price-tag-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: -35px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .price-tag {
+            background: var(--accent);
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: 900;
+            padding: 15px 40px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .currency {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .benefits {
+            padding: 30px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--light-mint);
+            padding: 15px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .b-icon {
+            font-size: 1.5rem;
+            background: var(--white);
+            color: var(--primary);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .b-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .how-to-use {
+            background: #f9fbfb;
+            padding: 25px 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-num {
+            width: 35px;
+            height: 35px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+            margin: 0 auto 10px;
+            font-size: 1.1rem;
+        }
+
+        .step-text {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .footer {
+            background: #EAEAEA;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .company-name {
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-top: 10px;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- الرأس -->
+        <div class="hero">
+            <div class="brand-name">SWISH & BLISS</div>
+            
+            <!-- إطار الصورة -->
+            <div class="product-showcase">
+                <img src="product.png" alt="صورة منتج سويش آند بليس" class="product-img">
+            </div>
+
+            <div class="subtitle">حماية متكاملة.. لانتعاش يدوم</div>
+            <div class="volume">حجم العبوة: 250 مل</div>
+        </div>
+
+        <!-- السعر -->
+        <div class="price-tag-wrapper">
+            <div class="price-tag">
+                95 <span class="currency">ج.م</span>
+            </div>
+        </div>
+
+        <!-- الفوائد -->
+        <div class="benefits">
+            <div class="section-title">لماذا SWISH & BLISS؟</div>
+            
+            <div class="benefit-item">
+                <div class="b-icon">🛡️</div>
+                <div class="b-text">يزيل الجير ويقلل البلاك بفعالية</div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="b-icon">🩹</div>
+                <div class="b-text">يساعد على التئام اللثة وتقويتها</div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="b-icon">🌿</div>
+                <div class="b-text">يهدئ ويحمي اللثة من الالتهابات</div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="b-icon">❄️</div>
+                <div class="b-text">نفس منعش وثقة تدوم طويلاً</div>
+            </div>
+        </div>
+
+        <!-- طريقة الاستخدام -->
+        <div class="how-to-use">
+            <div class="section-title">خطوات بسيطة لأقصى حماية</div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-text">صب<br>(مقدار غطاء)</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">تمضمض<br>(مرتين يومياً)</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-text">ابصق<br>(لا تبلعه)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- التحذيرات والشركة المنتجة -->
+        <div class="footer">
+            ⚠️ يُحفظ بعيداً عن متناول الأطفال. تجنب ملامسة العينين. لا يُستخدم للأطفال دون سن 12 عاماً.
+            <span class="company-name">ZENEXA PHARMA</span>
+            <span style="display:block; margin-top:3px;">صُنع في مصر بواسطة نيل كوزماتيكس</span>
+        </div>
+    </div>
+
+</body>
+</html>
