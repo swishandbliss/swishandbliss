@@ -30,6 +30,7 @@
             justify-content: center;
             align-items: center;
             padding: 15px;
+            position: relative;
         }
 
         .mobile-container {
@@ -75,18 +76,15 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            overflow: hidden; /* بيقص أي حاجة تطلع بره الدائرة */
+            overflow: hidden;
         }
 
-      /* التعديل الجديد لتحريك الإزازة لفوق */
         .product-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            /* عدلنا الزوم لـ 1.7 عشان تبقى مريحة أكتر */
             transform: scale(1.5); 
             filter: drop-shadow(0 15px 15px rgba(0,0,0,0.4)); 
-            /* هنا اللعبة: الـ margin-top بالسالب بيسحب العنصر لفوق */
             margin-top: -15px; 
         }
 
@@ -132,8 +130,32 @@
             font-weight: 700;
         }
 
+        /* تنسيق بادج خصم الكميات */
+        .bulk-discount-badge {
+            margin: 20px 20px 0 20px;
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFE082 100%);
+            border: 2px dashed #FFA000;
+            color: #5D4037;
+            padding: 12px 15px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 900;
+            box-shadow: 0 5px 15px rgba(255, 160, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            animation: badge-pulse 2s infinite;
+        }
+
+        .bulk-discount-badge span {
+            color: #D32F2F;
+            font-size: 1.1rem;
+        }
+
         .benefits {
-            padding: 30px 20px;
+            padding: 25px 20px 30px 20px;
         }
 
         .section-title {
@@ -228,14 +250,70 @@
             display: block;
         }
 
+        /* زر الواتساب العائم والمشع */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: #25d366;
+            color: #FFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            animation: whatsapp-pulse 1.5s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float svg {
+            width: 35px;
+            height: 35px;
+            fill: #ffffff;
+        }
+
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+
+        @keyframes badge-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes whatsapp-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- زر الواتساب العائم -->
+    <a href="https://wa.me/201121217121" class="whatsapp-float" target="_blank" aria-label="تواصل عبر الواتساب">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.371l-.361-.214-3.732.978.998-3.635-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.887 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.688 1.448h.005c6.555 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
 
     <div class="mobile-container">
         <!-- الرأس -->
@@ -256,6 +334,11 @@
             <div class="price-tag">
                 95 <span class="currency">ج.م</span>
             </div>
+        </div>
+
+        <!-- بادج خصم الكميات الجديد -->
+        <div class="bulk-discount-badge">
+            <span>📦</span> متاح خصم خاص للكميات 📦
         </div>
 
         <!-- الفوائد -->
